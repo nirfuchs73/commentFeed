@@ -1,10 +1,10 @@
 <template>
     <section class="wrappr">
         <!-- <h1>FeedApp</h1> -->
-        <form class="feed-container flex wrapper">
-            <input type="text" placeholder="Email" class="feed-email">
-            <textarea name id cols="30" rows="10" placeholder="Message" class="feed-message"></textarea>
-            <button class="feed-submit-btn">Submit</button>
+        <form class="feed-container flex wrapper" @submit.prevent="addComment()">
+            <input type="text" placeholder="Email" class="feed-email" v-model="comment.email">
+            <textarea name id cols="30" rows="10" placeholder="Message" class="feed-message" v-model="comment.text"></textarea>
+            <button class="feed-submit-btn" type="submit">Submit</button>
         </form>
         <div class="comments-container flex wrapper">
             <!-- <filter></filter> -->
@@ -15,21 +15,25 @@
 </template>
 
 <script>
+import commentService from '../services/CommentService.js';
 
 export default {
     name: "FeedApp",
     data() {
         return {
-
+            comment: null
         };
     },
     created() {
-
+        this.comment = commentService.getEmpty();
     },
     computed: {
 
     },
     methods: {
+        addComment() {
+            console.log('addComment');
+        }
 
     },
     components: {
@@ -68,7 +72,7 @@ export default {
     margin: 3px;
 }
 
-.comments-items{
+.comments-items {
     margin: 3px;
     height: 200px;
     border: solid 1px;

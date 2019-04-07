@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import commentService from './services/CommentService.js';
 
 Vue.use(Vuex)
 

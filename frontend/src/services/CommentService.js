@@ -48,6 +48,7 @@ function addComment(comment) {
 function getEmpty() {
     return {
         email: '',
-        text: ''
+        text: '',
+        imgUrl: ''
     }
 }
